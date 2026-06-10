@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Sindhu Chirumamilla - B.Tech Student | Cloud Enthusiast | Campus Ambassador | Community Builder at Siddhartha Academy of Higher Education" />
+  <meta name="keywords" content="Sindhu Chirumamilla, Cloud Computing, AWS, Campus Ambassador, B.Tech, Siddhartha Academy, Data Analytics, Microsoft, Cisco" />
+  <meta name="author" content="Sindhu Chirumamilla" />
+  <title>Sindhu Chirumamilla | Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Scroll Progress Bar -->
+  <div id="scroll-progress"></div>
+
+  <!-- Particle Background -->
+  <canvas id="particle-canvas"></canvas>
+
+  <!-- Navigation -->
+  <nav id="navbar">
+    <div class="nav-container">
+      <a href="#home" class="nav-logo">SC<span class="dot">.</span></a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#certifications">Certs</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#achievements">Achievements</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#timeline">Journey</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button id="theme-toggle" aria-label="Toggle theme">
+          <i class="fas fa-sun" id="theme-icon"></i>
+        </button>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ═══════════════════════════════════════════ HERO -->
+  <section id="home" class="hero">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        Available for Opportunities
+      </div>
+      <h1 class="hero-name">Sindhu<br /><span class="gradient-text">Chirumamilla</span></h1>
+      <p class="hero-title"><span id="typed-text"></span><span class="cursor">|</span></p>
+      <p class="hero-intro">
+        Passionate about cloud computing, AI, and technology communities. Actively involved in AWS learning
+        programs, Microsoft Learn initiatives, campus ambassador activities, and helping students discover
+        opportunities that accelerate their careers.
+      </p>
+      <div class="hero-buttons">
+        <a href="#projects" class="btn btn-primary"><i class="fas fa-rocket"></i> View Projects</a>
+        <a href="#contact" class="btn btn-secondary"><i class="fas fa-envelope"></i> Contact Me</a>
+        <a href="#" class="btn btn-outline" id="resume-btn"><i class="fas fa-download"></i> Resume</a>
+      </div>
+      <div class="hero-tech-icons">
+        <div class="tech-icon" title="AWS"><i class="fab fa-aws"></i></div>
+        <div class="tech-icon" title="Cloud"><i class="fas fa-cloud"></i></div>
+        <div class="tech-icon" title="AI"><i class="fas fa-brain"></i></div>
+        <div class="tech-icon" title="Java"><i class="fab fa-java"></i></div>
+        <div class="tech-icon" title="GitHub"><i class="fab fa-github"></i></div>
+        <div class="tech-icon" title="LinkedIn"><i class="fab fa-linkedin"></i></div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-avatar-ring">
+        <div class="hero-avatar">
+          <div class="avatar-placeholder"><i class="fas fa-user-graduate"></i></div>
+        </div>
+        <div class="orbit orbit-1"><div class="orbit-icon"><i class="fab fa-aws"></i></div></div>
+        <div class="orbit orbit-2"><div class="orbit-icon"><i class="fas fa-cloud"></i></div></div>
+        <div class="orbit orbit-3"><div class="orbit-icon"><i class="fas fa-brain"></i></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════ ABOUT -->
+  <section id="about" class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Who I Am</span>
+        <h2 class="section-title">About <span class="gradient-text">Me</span></h2>
+      </div>
+      <div class="about-grid">
+        <div class="about-image-col">
+          <div class="about-card glass">
+            <div class="about-avatar"><i class="fas fa-user-graduate"></i></div>
+            <h3>Sindhu Chirumamilla</h3>
+            <p class="about-role">B.Tech Student — CSE</p>
+            <p class="about-college">Siddhartha Academy of Higher Education, Vijayawada</p>
+            <div class="about-socials">
+              <a href="https://www.linkedin.com/in/sindhu-chirumamilla-b1211738b/" target="_blank" class="social-link linkedin" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+              <a href="https://github.com/sindhuchowdhary2006-coder" target="_blank" class="social-link github" title="GitHub"><i class="fab fa-github"></i></a>
+              <a href="mailto:sindhuchowdhary2006@gmail.com" class="social-link email" title="Email"><i class="fas fa-envelope"></i></a>
+              <a href="tel:+917013714651" class="social-link phone" title="Phone"><i class="fas fa-phone"></i></a>
+              <a href="https://www.instagram.com/sindhu._.1108?igsh=b2ZkbWlzZThtYTE=" target="_blank" class="social-link insta" title="Instagram"><i class="fab fa-instagram"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="about-content-col">
+          <p class="about-text">Hi, I'm Sindhu — a B.Tech student who believes technology is the most powerful tool for creating opportunity. I'm currently learning <strong>Object-Oriented Programming in Java</strong> and exploring the vast world of <strong>Cloud Computing and AWS</strong>.</p>
+          <p class="about-text">Beyond academics, I'm an active participant in technology communities, campus ambassador programs, and student leadership initiatives. I'm passionate about <strong>AI, content creation on LinkedIn</strong>, and helping fellow students discover learning resources that can transform their careers.</p>
+          <div class="about-highlights">
+            <div class="highlight-item glass"><i class="fas fa-graduation-cap"></i><span>B.Tech Student</span></div>
+            <div class="highlight-item glass"><i class="fab fa-aws"></i><span>AWS Explorer</span></div>
+            <div class="highlight-item glass"><i class="fas fa-users"></i><span>Community Builder</span></div>
+            <div class="highlight-item glass"><i class="fas fa-star"></i><span>Campus Ambassador</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════ SKILLS -->
+  <section id="skills" class="section bg-alt">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">What I Know</span>
+        <h2 class="section-title">My <span class="gradient-text">Skills</span></h2>
+      </div>
+      <div class="skills-grid">
+        <div class="skills-col">
+          <h3 class="skills-col-title"><i class="fas fa-code"></i> Technical Skills</h3>
+          <div class="skill-bars">
+            <div class="skill-bar-item" data-percent="75">
+              <div class="skill-label"><span>Java</span><span class="skill-pct">75%</span></div>
+              <div class="skill-track"><div class="skill-fill"></div></div>
+            </div>
+            <div class="skill-bar-item" data-percent="70">
+              <div class="skill-label"><span>OOP Concepts</span><span class="skill-pct">70%</span></div>
+              <div class="skill-track"><div class="skill-fill"></div></div>
+            </div>
+            <div class="skill-bar-item" data-percent="65">
+              <div class="skill-label"><span>Cloud Computing</span><span class="skill-pct">65%</span></div>
+              <div class="skill-track"><div class="skill-fill"></div></div>
+            </div>
+            <div class="skill-bar-item" data-percent="60">
+              <div class="skill-label"><span>AWS</span><span class="skill-pct">60%</span></div>
+              <div class="skill-track"><div class="skill-fill"></div></div>
+            </div>
+            <div class="skill-bar-item" data-percent="70">
+              <div class="skill-label"><span>Git &amp; GitHub</span><span class="skill-pct">70%</span></div>
+              <div class="skill-track"><div class="skill-fill"></div></div>
+            </div>
+            <div class="skill-bar-item" data-percent="75">
+              <div class="skill-label"><span>Problem Solving</span><span class="skill-pct">75%</span></div>
+              <div class="skill-track"><div class="skill-fill"></div></div>
+            </div>
+          </div>
+        </div>
+        <div class="skills-col">
+          <h3 class="skills-col-title"><i class="fas fa-people-group"></i> Professional Skills</h3>
+          <div class="skill-cards">
+            <div class="skill-card glass"><i class="fas fa-crown"></i><span>Leadership</span></div>
+            <div class="skill-card glass"><i class="fas fa-microphone"></i><span>Public Speaking</span></div>
+            <div class="skill-card glass"><i class="fas fa-users"></i><span>Community Building</span></div>
+            <div class="skill-card glass"><i class="fas fa-pen-nib"></i><span>Content Creation</span></div>
+            <div class="skill-card glass"><i class="fas fa-calendar-check"></i><span>Event Promotion</span></div>
+            <div class="skill-card glass"><i class="fas fa-handshake"></i><span>Team Collaboration</span></div>
+            <div class="skill-card glass"><i class="fas fa-comments"></i><span>Communication</span></div>
+            <div class="skill-card glass"><i class="fas fa-bullseye"></i><span>Strategic Thinking</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════ CERTIFICATIONS -->
+  <section id="certifications" class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Credentials</span>
+        <h2 class="section-title">My <span class="gradient-text">Certifications</span></h2>
+        <p class="section-sub">Real certificates earned through hands-on programs and job simulations</p>
+      </div>
+      <div class="cert-cards-grid">
+
+        <!-- 1. AWS -->
+        <div class="cert-big-card glass" onclick="openCert('cert-aws')">
+          <div class="cert-big-top aws-grad">
+            <i class="fab fa-aws cert-big-icon"></i>
+            <span class="cert-big-issuer">AWS Training &amp; Certification</span>
+          </div>
+          <div class="cert-big-body">
+            <h4>AWS Cloud Practitioner Essentials</h4>
+            <p>Completed hands-on cloud fundamentals covering AWS core services, security, architecture, and pricing.</p>
+            <div class="cert-big-footer">
+              <span class="cert-date"><i class="fas fa-calendar-check"></i> May 09, 2026</span>
+              <span class="cert-status active">Completed</span>
+            </div>
+          </div>
+          <div class="cert-view-overlay"><i class="fas fa-eye"></i> View Certificate</div>
+        </div>
+
+        <!-- 2. Microsoft -->
+        <div class="cert-big-card glass" onclick="openCert('cert-ms')">
+          <div class="cert-big-top ms-grad">
+            <i class="fab fa-microsoft cert-big-icon"></i>
+            <span class="cert-big-issuer">Microsoft Applied Skills</span>
+          </div>
+          <div class="cert-big-body">
+            <h4>Generate Reports with AI Research Agents</h4>
+            <p>Passed all requirements for Microsoft Applied Skills — AI-powered report generation using research agents.</p>
+            <div class="cert-big-footer">
+              <span class="cert-date"><i class="fas fa-calendar-check"></i> May 2, 2026</span>
+              <span class="cert-status active">Verified</span>
+            </div>
+          </div>
+          <div class="cert-view-overlay"><i class="fas fa-eye"></i> View Certificate</div>
+        </div>
+
+        <!-- 3. Deloitte -->
+        <div class="cert-big-card glass" onclick="openCert('cert-deloitte')">
+          <div class="cert-big-top deloitte-grad">
+            <i class="fas fa-chart-bar cert-big-icon"></i>
+            <span class="cert-big-issuer">Deloitte × Forage</span>
+          </div>
+          <div class="cert-big-body">
+            <h4>Data Analytics Job Simulation</h4>
+            <p>Completed practical tasks in data analysis and forensic technology over April–June 2026.</p>
+            <div class="cert-big-footer">
+              <span class="cert-date"><i class="fas fa-calendar-check"></i> June 3, 2026</span>
+              <span class="cert-status active">Completed</span>
+            </div>
+          </div>
+          <div class="cert-view-overlay"><i class="fas fa-eye"></i> View Certificate</div>
+        </div>
+
+        <!-- 4. JP Morgan -->
+        <div class="cert-big-card glass" onclick="openCert('cert-jpm')">
+          <div class="cert-big-top jpm-grad">
+            <i class="fas fa-code cert-big-icon"></i>
+            <span class="cert-big-issuer">JPMorgan Chase &amp; Co. × Forage</span>
+          </div>
+          <div class="cert-big-body">
+            <h4>Software Engineering Job Simulation</h4>
+            <p>Completed tasks in Project Setup, Kafka Integration, H2 Integration, REST API Integration &amp; Controller.</p>
+            <div class="cert-big-footer">
+              <span class="cert-date"><i class="fas fa-calendar-check"></i> March 10, 2026</span>
+              <span class="cert-status active">Completed</span>
+            </div>
+          </div>
+          <div class="cert-view-overlay"><i class="fas fa-eye"></i> View Certificate</div>
+        </div>
+
+        <!-- 5. MongoDB -->
+        <div class="cert-big-card glass" onclick="openCert('cert-mongo')">
+          <div class="cert-big-top mongo-grad">
+            <i class="fas fa-database cert-big-icon"></i>
+            <span class="cert-big-issuer">MongoDB University</span>
+          </div>
+          <div class="cert-big-body">
+            <h4>MongoDB Atlas Search</h4>
+            <p>Proof of Completion for successfully mastering MongoDB Atlas Search capabilities and implementation.</p>
+            <div class="cert-big-footer">
+              <span class="cert-date"><i class="fas fa-calendar-check"></i> March 22, 2026</span>
+              <span class="cert-status active">Completed</span>
+            </div>
+          </div>
+          <div class="cert-view-overlay"><i class="fas fa-eye"></i> View Certificate</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ CERTIFICATE MODALS ═══ -->
+  <div class="cert-modal-overlay" id="cert-modal-overlay" onclick="closeCert()">
+    <div class="cert-modal glass" onclick="event.stopPropagation()">
+      <button class="cert-modal-close" onclick="closeCert()"><i class="fas fa-times"></i></button>
+
+      <!-- AWS -->
+      <div class="cert-modal-content" id="cert-aws">
+        <div class="cert-preview aws-preview">
+          <div class="cert-preview-header aws-grad">
+            <i class="fab fa-aws"></i>
+            <span>AWS Training &amp; Certification</span>
+          </div>
+          <div class="cert-preview-body">
+            <p class="cert-preview-type">Completion Certificate</p>
+            <h2>AWS Cloud Practitioner Essentials</h2>
+            <p class="cert-preview-awarded">Awarded to</p>
+            <h3>Chirumamilla Sindhu</h3>
+            <p class="cert-preview-date">Completed: May 09, 2026</p>
+            <p class="cert-preview-sign">— Michelle Vaz, Director, AWS Training &amp; Certification</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Microsoft -->
+      <div class="cert-modal-content" id="cert-ms">
+        <div class="cert-preview ms-preview">
+          <div class="cert-preview-header ms-grad">
+            <i class="fab fa-microsoft"></i>
+            <span>Microsoft Applied Skills</span>
+          </div>
+          <div class="cert-preview-body">
+            <p class="cert-preview-type">Applied Skills Certificate</p>
+            <h2>Generate Reports with AI Research Agents</h2>
+            <p class="cert-preview-awarded">Awarded to</p>
+            <h3>Chirumamilla Sindhu</h3>
+            <p class="cert-preview-date">Earned: May 2, 2026</p>
+            <p class="cert-preview-id">Credential ID: E76CD0FF72002CF</p>
+            <p class="cert-preview-sign">— Satya Narayana Nadella, Microsoft</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Deloitte -->
+      <div class="cert-modal-content" id="cert-deloitte">
+        <div class="cert-preview deloitte-preview">
+          <div class="cert-preview-header deloitte-grad">
+            <i class="fas fa-chart-bar"></i>
+            <span>Deloitte × Forage</span>
+          </div>
+          <div class="cert-preview-body">
+            <p class="cert-preview-type">Certificate of Completion</p>
+            <h2>Data Analytics Job Simulation</h2>
+            <p class="cert-preview-awarded">Awarded to</p>
+            <h3>Sindhu Chowdhary</h3>
+            <p class="cert-preview-date">Completed: June 3, 2026</p>
+            <p class="cert-preview-tasks"><strong>Skills covered:</strong> Data Analysis · Forensic Technology</p>
+            <p class="cert-preview-sign">— Tina McCreery, Chief Human Resources Officer, Deloitte</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- JP Morgan -->
+      <div class="cert-modal-content" id="cert-jpm">
+        <div class="cert-preview jpm-preview">
+          <div class="cert-preview-header jpm-grad">
+            <i class="fas fa-code"></i>
+            <span>JPMorgan Chase &amp; Co. × Forage</span>
+          </div>
+          <div class="cert-preview-body">
+            <p class="cert-preview-type">Certificate of Completion</p>
+            <h2>Software Engineering Job Simulation</h2>
+            <p class="cert-preview-awarded">Awarded to</p>
+            <h3>Sindhu Chowdhary</h3>
+            <p class="cert-preview-date">Completed: March 10, 2026</p>
+            <p class="cert-preview-tasks"><strong>Skills covered:</strong> Project Setup · Kafka Integration · H2 Integration · REST API Integration · REST API Controller</p>
+            <p class="cert-preview-sign">— Tom Brunskill, Co-Founder of Forage</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- MongoDB -->
+      <div class="cert-modal-content" id="cert-mongo">
+        <div class="cert-preview mongo-preview">
+          <div class="cert-preview-header mongo-grad">
+            <i class="fas fa-database"></i>
+            <span>MongoDB University</span>
+          </div>
+          <div class="cert-preview-body">
+            <p class="cert-preview-type">Proof of Completion</p>
+            <h2>MongoDB Atlas Search</h2>
+            <p class="cert-preview-awarded">Awarded to</p>
+            <h3>Sindhu Chowdhary</h3>
+            <p class="cert-preview-date">Completed: March 22, 2026</p>
+            <p class="cert-preview-id">Certificate ID: MDBu8t9j4seo3</p>
+            <p class="cert-preview-sign">— Raghu Viswanathan, VP Education, MongoDB Inc.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════ EXPERIENCE -->
+  <section id="experience" class="section bg-alt">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">What I've Done</span>
+        <h2 class="section-title">My <span class="gradient-text">Experience</span></h2>
+      </div>
+      <div class="exp-grid">
+        <div class="exp-card glass">
+          <div class="exp-icon"><i class="fas fa-star"></i></div>
+          <h3>Campus Ambassador</h3>
+          <p class="exp-org">Technology Programs</p>
+          <ul class="exp-list">
+            <li><i class="fas fa-check-circle"></i>Promoting AWS and Microsoft learning programs on campus</li>
+            <li><i class="fas fa-check-circle"></i>Student outreach and awareness campaigns</li>
+            <li><i class="fas fa-check-circle"></i>Community engagement and peer mentoring</li>
+            <li><i class="fas fa-check-circle"></i>Managing social media campaigns for tech events</li>
+            <li><i class="fas fa-check-circle"></i>Organizing and participating in student tech events</li>
+          </ul>
+        </div>
+        <div class="exp-card glass">
+          <div class="exp-icon leader-icon"><i class="fas fa-crown"></i></div>
+          <h3>Student Leader</h3>
+          <p class="exp-org">College &amp; Department</p>
+          <ul class="exp-list">
+            <li><i class="fas fa-check-circle"></i>Class Representative — bridging students and faculty</li>
+            <li><i class="fas fa-check-circle"></i>Organizing student initiatives and workshops</li>
+            <li><i class="fas fa-check-circle"></i>Helping peers discover internship &amp; learning opportunities</li>
+            <li><i class="fas fa-check-circle"></i>Creating LinkedIn content to inspire fellow students</li>
+            <li><i class="fas fa-check-circle"></i>Coordinating group study and knowledge-sharing sessions</li>
+          </ul>
+        </div>
+        <div class="exp-card glass">
+          <div class="exp-icon content-icon"><i class="fab fa-linkedin"></i></div>
+          <h3>LinkedIn Content Creator</h3>
+          <p class="exp-org">Personal Brand</p>
+          <ul class="exp-list">
+            <li><i class="fas fa-check-circle"></i>Sharing cloud computing and AWS learning insights</li>
+            <li><i class="fas fa-check-circle"></i>Posting about student opportunities and programs</li>
+            <li><i class="fas fa-check-circle"></i>Generated 900+ link visitors through posts</li>
+            <li><i class="fas fa-check-circle"></i>Building a community of student tech enthusiasts</li>
+            <li><i class="fas fa-check-circle"></i>Documenting learning journey publicly</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════ ACHIEVEMENTS -->
+  <section id="achievements" class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Milestones</span>
+        <h2 class="section-title">My <span class="gradient-text">Achievements</span></h2>
+      </div>
+      <div class="stats-grid">
+        <div class="stat-card glass">
+          <div class="stat-icon"><i class="fas fa-link"></i></div>
+          <div class="stat-row"><span class="stat-number" data-target="900">0</span><span class="stat-suffix">+</span></div>
+          <p class="stat-label">LinkedIn Link Visitors Generated</p>
+        </div>
+        <div class="stat-card glass">
+          <div class="stat-icon ms-color"><i class="fab fa-microsoft"></i></div>
+          <div class="stat-row"><span class="stat-number" data-target="5">0</span><span class="stat-suffix">+</span></div>
+          <p class="stat-label">Microsoft Learn Achievements</p>
+        </div>
+        <div class="stat-card glass">
+          <div class="stat-icon aws-color"><i class="fab fa-aws"></i></div>
+          <div class="stat-row"><span class="stat-number" data-target="10">0</span><span class="stat-suffix">+</span></div>
+          <p class="stat-label">AWS Learning Modules Completed</p>
+        </div>
+        <div class="stat-card glass">
+          <div class="stat-icon"><i class="fas fa-star"></i></div>
+          <div class="stat-row"><span class="stat-number" data-target="3">0</span><span class="stat-suffix">+</span></div>
+          <p class="stat-label">Ambassador Programs Participated</p>
+        </div>
+        <div class="stat-card glass">
+          <div class="stat-icon"><i class="fas fa-users"></i></div>
+          <div class="stat-row"><span class="stat-number" data-target="200">0</span><span class="stat-suffix">+</span></div>
+          <p class="stat-label">Community Members Reached</p>
+        </div>
+        <div class="stat-card glass">
+          <div class="stat-icon"><i class="fas fa-certificate"></i></div>
+          <div class="stat-row"><span class="stat-number" data-target="5">0</span><span class="stat-suffix">+</span></div>
+          <p class="stat-label">Certifications Earned</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════ PROJECTS -->
+  <section id="projects" class="section bg-alt">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">What I've Built</span>
+        <h2 class="section-title">My <span class="gradient-text">Projects</span></h2>
+      </div>
+      <div class="projects-grid">
+        <div class="project-card glass">
+          <div class="project-img">
+            <div class="project-img-placeholder portfolio"><i class="fas fa-globe"></i></div>
+            <div class="project-overlay">
+              <a href="#" class="proj-link"><i class="fab fa-github"></i></a>
+              <a href="#" class="proj-link"><i class="fas fa-external-link-alt"></i></a>
+            </div>
+          </div>
+          <div class="project-body">
+            <h4>Personal Portfolio Website</h4>
+            <p>Responsive portfolio showcasing skills, projects, and learning journey. Built with HTML, CSS, and JavaScript.</p>
+            <div class="project-tags">
+              <span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span>
+            </div>
+          </div>
+        </div>
+        <div class="project-card glass">
+          <div class="project-img">
+            <div class="project-img-placeholder java"><i class="fab fa-java"></i></div>
+            <div class="project-overlay">
+              <a href="#" class="proj-link"><i class="fab fa-github"></i></a>
+              <a href="#" class="proj-link"><i class="fas fa-external-link-alt"></i></a>
+            </div>
+          </div>
+          <div class="project-body">
+            <h4>Java OOP Projects</h4>
+            <p>Collection of OOP projects demonstrating encapsulation, inheritance, polymorphism, and abstraction.</p>
+            <div class="project-tags">
+              <span class="tag">Java</span><span class="tag">OOP</span><span class="tag">DSA</span>
+            </div>
+          </div>
+        </div>
+        <div class="project-card glass">
+          <div class="project-img">
+            <div class="project-img-placeholder cloud"><i class="fas fa-cloud"></i></div>
+            <div class="project-overlay">
+              <a href="#" class="proj-link"><i class="fab fa-github"></i></a>
+              <a href="#" class="proj-link"><i class="fas fa-external-link-alt"></i></a>
+            </div>
+          </div>
+          <div class="project-body">
+            <h4>Cloud Learning Projects</h4>
+            <p>Hands-on AWS labs exploring cloud services, deployment, and cloud architecture basics.</p>
+            <div class="project-tags">
+              <span class="tag">AWS</span><span class="tag">Cloud</span><span class="tag">EC2</span>
+            </div>
+          </div>
+        </div>
+        <div class="project-card glass">
+          <div class="project-img">
+            <div class="project-img-placeholder ai"><i class="fas fa-brain"></i></div>
+            <div class="project-overlay">
+              <a href="#" class="proj-link"><i class="fab fa-github"></i></a>
+              <a href="#" class="proj-link"><i class="fas fa-external-link-alt"></i></a>
+            </div>
+          </div>
+          <div class="project-body">
+            <h4>AI Learning Experiments</h4>
+            <p>Exploration of AI fundamentals through hands-on experiments with basic ML concepts.</p>
+            <div class="project-tags">
+              <span class="tag">AI</span><span class="tag">ML Basics</span><span class="tag">Python</span>
+            </div>
+          </div>
+        </div>
+        <div class="project-card glass">
+          <div class="project-img">
+            <div class="project-img-placeholder aws"><i class="fab fa-aws"></i></div>
+            <div class="project-overlay">
+              <a href="#" class="proj-link"><i class="fab fa-github"></i></a>
+              <a href="#" class="proj-link"><i class="fas fa-external-link-alt"></i></a>
+            </div>
+          </div>
+          <div class="project-body">
+            <h4>Future AWS Projects</h4>
+            <p>Upcoming projects on AWS serverless architecture and cloud-native application development.</p>
+            <div class="project-tags">
+              <span class="tag">AWS Lambda</span><span class="tag">S3</span><span class="tag">Coming Soon</span>
+            </div>
+          </div>
+        </div>
+        <div class="project-card glass">
+          <div class="project-img">
+            <div class="project-img-placeholder content"><i class="fab fa-linkedin"></i></div>
+            <div class="project-overlay">
+              <a href="https://www.linkedin.com/in/sindhu-chirumamilla-b1211738b/" target="_blank" class="proj-link"><i class="fab fa-linkedin"></i></a>
+            </div>
+          </div>
+          <div class="project-body">
+            <h4>LinkedIn Content Strategy</h4>
+            <p>Consistent content creation about AWS and cloud computing generating 900+ link visitors.</p>
+            <div class="project-tags">
+              <span class="tag">LinkedIn</span><span class="tag">Content</span><span class="tag">Community</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════ GALLERY -->
+  <section id="gallery" class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Highlights</span>
+        <h2 class="section-title">My <span class="gradient-text">Gallery</span></h2>
+      </div>
+      <div class="gallery-grid">
+        <div class="gallery-item glass"><div class="gallery-placeholder cert-color"><i class="fas fa-certificate"></i><span>Certificate</span></div></div>
+        <div class="gallery-item glass"><div class="gallery-placeholder aws-color"><i class="fab fa-aws"></i><span>AWS Achievement</span></div></div>
+        <div class="gallery-item glass"><div class="gallery-placeholder ms-color"><i class="fab fa-microsoft"></i><span>Microsoft Badge</span></div></div>
+        <div class="gallery-item glass"><div class="gallery-placeholder event-color"><i class="fas fa-calendar-days"></i><span>Event Participation</span></div></div>
+        <div class="gallery-item glass"><div class="gallery-placeholder milestone-color"><i class="fas fa-trophy"></i><span>Learning Milestone</span></div></div>
+        <div class="gallery-item glass"><div class="gallery-placeholder ambassador-color"><i class="fas fa-star"></i><span>Ambassador Activity</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════ TIMELINE -->
+  <section id="timeline" class="section bg-alt">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">My Story</span>
+        <h2 class="section-title">Learning <span class="gradient-text">Journey</span></h2>
+      </div>
+      <div class="timeline">
+        <div class="timeline-item left">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card glass">
+            <span class="timeline-year">2025</span>
+            <h4>Foundation Building</h4>
+            <ul>
+              <li>Started deeper Java &amp; OOP learning</li>
+              <li>Explored Software Engineering fundamentals</li>
+              <li>Began building LinkedIn presence</li>
+              <li>Joined first campus ambassador program</li>
+            </ul>
+          </div>
+        </div>
+        <div class="timeline-item right">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card glass">
+            <span class="timeline-year">Early 2026</span>
+            <h4>Cloud &amp; Community</h4>
+            <ul>
+              <li>Started AWS Learning Journey on Skill Builder</li>
+              <li>Earned multiple Microsoft Learn achievements</li>
+              <li>Became active campus ambassador</li>
+              <li>Generated 900+ LinkedIn link visitors</li>
+            </ul>
+          </div>
+        </div>
+        <div class="timeline-item left">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card glass">
+            <span class="timeline-year">Mid 2026</span>
+            <h4>Growth &amp; Impact</h4>
+            <ul>
+              <li>Deepened Cloud Computing expertise</li>
+              <li>Expanded community building activities</li>
+              <li>Completed AI Fundamentals program</li>
+              <li>Launched personal portfolio website</li>
+            </ul>
+          </div>
+        </div>
+        <div class="timeline-item right">
+          <div class="timeline-dot future"></div>
+          <div class="timeline-card glass future-card">
+            <span class="timeline-year">Future</span>
+            <h4>What's Next</h4>
+            <ul>
+              <li>AWS Certified Cloud Practitioner</li>
+              <li>Build real-world cloud applications</li>
+              <li>Scale community &amp; mentorship impact</li>
+              <li>Contribute to open source</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════ TESTIMONIALS -->
+  <section id="testimonials" class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Kind Words</span>
+        <h2 class="section-title">What People <span class="gradient-text">Say</span></h2>
+      </div>
+      <div class="testimonial-grid">
+        <div class="testimonial-card glass">
+          <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+          <p>"Sindhu has an incredible ability to connect people with opportunities. Her dedication to the campus ambassador program and genuine passion for helping peers is truly inspiring."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar peer">P</div>
+            <div><strong>Peer</strong><span>B.Tech Classmate</span></div>
+          </div>
+        </div>
+        <div class="testimonial-card glass">
+          <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+          <p>"Her consistent content on LinkedIn about AWS and cloud computing has helped many students discover resources they didn't know existed. A true community builder."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar mentor">M</div>
+            <div><strong>Mentor</strong><span>Tech Community Lead</span></div>
+          </div>
+        </div>
+        <div class="testimonial-card glass">
+          <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+          <p>"Sindhu's enthusiasm for learning and sharing knowledge is contagious. She always brings energy and initiative to every project and community event she's part of."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar community">C</div>
+            <div><strong>Community Member</strong><span>Student Tech Group</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════ CONTACT -->
+  <section id="contact" class="section bg-alt">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Let's Talk</span>
+        <h2 class="section-title">Get In <span class="gradient-text">Touch</span></h2>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-info">
+          <p class="contact-intro">Have an opportunity, project idea, or just want to connect? I'd love to hear from you!</p>
+          <div class="contact-links">
+            <a href="https://www.linkedin.com/in/sindhu-chirumamilla-b1211738b/" target="_blank" class="contact-item glass">
+              <div class="contact-icon linkedin-bg"><i class="fab fa-linkedin"></i></div>in"></i></div>
+              <div><strong>LinkedIn</strong><span>Connect professionally</span></div>
+              <i class="fas fa-arrow-right"></i>
+            </a>
+            <a href="https://github.com/sindhuchowdhary2006-coder" target="_blank" class="contact-item glass">
+              <div class="contact-icon github-bg"><i class="fab fa-github"></i></div>
+              <div><strong>GitHub</strong><span>View my code</span></div>
+              <i class="fas fa-arrow-right"></i>
+            </a>
+            <a href="mailto:sindhuchowdhary2006@gmail.com" class="contact-item glass">
+              <div class="contact-icon email-bg"><i class="fas fa-envelope"></i></div>
+              <div><strong>Email</strong><span>sindhuchowdhary2006@gmail.com</span></div>
+              <i class="fas fa-arrow-right"></i>
+            </a>
+            <a href="tel:+917013714651" class="contact-item glass">
+              <div class="contact-icon phone-bg"><i class="fas fa-phone"></i></div>
+              <div><strong>Phone</strong><span>+91 7013714651</span></div>
+              <i class="fas fa-arrow-right"></i>
+            </a>
+            <a href="https://www.instagram.com/sindhu._.1108?igsh=b2ZkbWlzZThtYTE=" target="_blank" class="contact-item glass">
+              <div class="contact-icon insta-bg"><i class="fab fa-instagram"></i></div>
+              <div><strong>Instagram</strong><span>Follow my journey</span></div>
+              <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+        <div class="contact-form-wrap">
+          <form class="contact-form glass" id="contact-form" novalidate>
+            <div class="form-group">
+              <label for="fname">Your Name</label>
+              <input type="text" id="fname" name="name" placeholder="John Doe" required />
+              <span class="form-error" id="fname-error"></span>
+            </div>
+            <div class="form-group">
+              <label for="femail">Email Address</label>
+              <input type="email" id="femail" name="email" placeholder="john@example.com" required />
+              <span class="form-error" id="femail-error"></span>
+            </div>
+            <div class="form-group">
+              <label for="fsubject">Subject</label>
+              <input type="text" id="fsubject" name="subject" placeholder="Collaboration opportunity" required />
+              <span class="form-error" id="fsubject-error"></span>
+            </div>
+            <div class="form-group">
+              <label for="fmessage">Message</label>
+              <textarea id="fmessage" name="message" rows="5" placeholder="Tell me about your idea..." required></textarea>
+              <span class="form-error" id="fmessage-error"></span>
+            </div>
+            <button type="submit" class="btn btn-primary full-width">
+              <i class="fas fa-paper-plane"></i> Send Message
+            </button>
+            <div id="form-success" class="form-success hidden">
+              <i class="fas fa-check-circle"></i> Message sent! I'll get back to you soon.
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════ FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <a href="#home" class="nav-logo">SC<span class="dot">.</span></a>
+          <p>B.Tech Student | Cloud Enthusiast | Campus Ambassador</p>
+        </div>
+        <div class="footer-links">
+          <a href="#about">About</a>
+          <a href="#skills">Skills</a>
+          <a href="#projects">Projects</a>
+          <a href="#contact">Contact</a>
+        </div>
+        <div class="footer-socials">
+          <a href="https://www.linkedin.com/in/sindhu-chirumamilla-b1211738b/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+          <a href="https://github.com/sindhuchowdhary2006-coder" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+          <a href="mailto:sindhuchowdhary2006@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+          <a href="tel:+917013714651" aria-label="Phone"><i class="fas fa-phone"></i></a>
+          <a href="https://www.instagram.com/sindhu._.1108?igsh=b2ZkbWlzZThtYTE=" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 Sindhu Chirumamilla. Crafted with <i class="fas fa-heart" style="color:#F59E0B"></i> and passion.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
