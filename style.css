@@ -775,6 +775,9 @@ ul { list-style: none; }
 .project-img-placeholder.disaster {
   background: linear-gradient(135deg, #DC2626, #7C3AED);
 }
+.project-img-placeholder.securelink {
+  background: linear-gradient(135deg, #0EA5E9, #0369A1);
+}
 .featured-project {
   border-color: rgba(124,58,237,.4);
   box-shadow: 0 0 30px rgba(124,58,237,.15);

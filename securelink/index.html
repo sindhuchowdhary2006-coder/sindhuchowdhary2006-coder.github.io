@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>SecureLink Scanner — URL Threat Detection</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="nav-inner">
+    <div class="nav-brand"><i class="fas fa-shield-virus"></i><span>SecureLink</span><span class="nav-scanner">Scanner</span></div>
+    <div class="nav-links">
+      <a href="#scanner" class="nav-link active">Scanner</a>
+      <a href="#how-it-works" class="nav-link">How It Works</a>
+      <a href="#threat-types" class="nav-link">Threat Types</a>
+    </div>
+    <div class="nav-badge"><i class="fas fa-circle" style="color:#22c55e;font-size:.55rem"></i> Live Protection</div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="scanner">
+  <div class="hero-bg-grid"></div>
+  <div class="hero-content">
+    <div class="hero-pill"><i class="fas fa-shield-halved"></i> Advanced URL Threat Detection</div>
+    <h1>Scan URLs Before<br/><span class="hero-accent">You Click</span></h1>
+    <p class="hero-sub">Protect yourself from phishing, malware, and suspicious links. Our engine analyses URLs using 15+ security checks in real-time.</p>
+
+    <!-- SCANNER BOX -->
+    <div class="scanner-box" id="scanner-box">
+      <div class="scanner-input-row">
+        <div class="scanner-input-wrap">
+          <i class="fas fa-link scanner-icon"></i>
+          <input type="text" id="url-input" class="url-input" placeholder="Paste any URL to scan — e.g. https://example.com" autocomplete="off" spellcheck="false"/>
+          <button class="clear-btn" id="clear-btn" onclick="clearInput()" title="Clear"><i class="fas fa-times"></i></button>
+        </div>
+        <button class="scan-btn" id="scan-btn" onclick="startScan()">
+          <i class="fas fa-magnifying-glass"></i> Scan URL
+        </button>
+      </div>
+      <div class="scanner-meta">
+        <span><i class="fas fa-bolt"></i> Instant analysis</span>
+        <span><i class="fas fa-shield-check"></i> 15+ security checks</span>
+        <span><i class="fas fa-eye-slash"></i> No data stored</span>
+      </div>
+    </div>
+
+    <!-- EXAMPLE URLS -->
+    <div class="example-urls">
+      <span class="ex-label">Try examples:</span>
+      <button class="ex-btn safe-ex" onclick="tryExample('https://www.google.com')">google.com</button>
+      <button class="ex-btn warn-ex" onclick="tryExample('http://free-prize-winner-click-now.tk/claim?id=abc123')">Suspicious link</button>
+      <button class="ex-btn danger-ex" onclick="tryExample('http://paypa1-secure-login.xyz/verify?token=abc&redirect=steal')">Phishing link</button>
+    </div>
+  </div>
+</section>
+
+<!-- SCAN PROGRESS -->
+<div id="scan-progress-wrap" class="scan-progress-wrap hidden">
+  <div class="scan-progress-card">
+    <div class="sp-icon"><i class="fas fa-magnifying-glass-chart"></i></div>
+    <div class="sp-title">Analysing URL...</div>
+    <div class="sp-url" id="sp-url"></div>
+    <div class="sp-steps" id="sp-steps"></div>
+    <div class="sp-bar-wrap"><div class="sp-bar" id="sp-bar"></div></div>
+  </div>
+</div>
+
+<!-- RESULT SECTION -->
+<section id="result-section" class="result-section hidden">
+  <div class="result-container">
+    <div class="result-header" id="result-header"></div>
+    <div class="result-body">
+      <div class="result-left">
+        <div class="risk-score-card" id="risk-score-card"></div>
+        <div class="url-info-card" id="url-info-card"></div>
+      </div>
+      <div class="result-right">
+        <div class="checks-card" id="checks-card"></div>
+      </div>
+    </div>
+    <div class="result-actions">
+      <button class="ra-btn ra-primary" onclick="scrollToScanner()"><i class="fas fa-rotate-right"></i> Scan Another URL</button>
+      <button class="ra-btn ra-secondary" onclick="addToHistory()"><i class="fas fa-bookmark"></i> Save Report</button>
+    </div>
+  </div>
+</section>
+
+<!-- SCAN HISTORY -->
+<section id="history-section" class="history-section hidden">
+  <div class="result-container">
+    <div class="hist-header">
+      <h3><i class="fas fa-history"></i> Scan History</h3>
+      <button class="ra-btn ra-secondary" onclick="clearHistory()"><i class="fas fa-trash"></i> Clear All</button>
+    </div>
+    <div id="history-list"></div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how-it-works" class="info-section">
+  <div class="info-container">
+    <div class="info-header">
+      <span class="info-pill">How It Works</span>
+      <h2>Multi-Layer Security Analysis</h2>
+      <p>SecureLink runs every URL through a comprehensive 4-stage analysis pipeline</p>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-num">01</div>
+        <div class="step-icon"><i class="fas fa-link"></i></div>
+        <h4>URL Parsing</h4>
+        <p>Deconstructs the URL into protocol, domain, path, and parameters for deep inspection.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">02</div>
+        <div class="step-icon"><i class="fas fa-database"></i></div>
+        <h4>Pattern Matching</h4>
+        <p>Matches against known phishing patterns, blacklisted domains, and suspicious keyword databases.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">03</div>
+        <div class="step-icon"><i class="fas fa-brain"></i></div>
+        <h4>Heuristic Analysis</h4>
+        <p>Evaluates URL structure, domain age signals, homograph attacks, and typosquatting indicators.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">04</div>
+        <div class="step-icon"><i class="fas fa-chart-pie"></i></div>
+        <h4>Risk Scoring</h4>
+        <p>Combines all checks into a weighted risk score from 0–100 with a clear safety verdict.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THREAT TYPES -->
+<section id="threat-types" class="threat-section">
+  <div class="info-container">
+    <div class="info-header">
+      <span class="info-pill">Threat Intelligence</span>
+      <h2>What We Detect</h2>
+      <p>SecureLink identifies 6 major categories of URL-based threats</p>
+    </div>
+    <div class="threats-grid">
+      <div class="threat-card">
+        <div class="threat-icon" style="background:rgba(239,68,68,.1);color:#ef4444"><i class="fas fa-fish"></i></div>
+        <h4>Phishing</h4>
+        <p>Fake login pages designed to steal credentials by mimicking legitimate sites.</p>
+        <div class="threat-signals"><span>Fake domains</span><span>Login spoofing</span><span>Brand impersonation</span></div>
+      </div>
+      <div class="threat-card">
+        <div class="threat-icon" style="background:rgba(245,158,11,.1);color:#f59e0b"><i class="fas fa-bug"></i></div>
+        <h4>Malware</h4>
+        <p>Links that download or execute malicious software on your device.</p>
+        <div class="threat-signals"><span>Executable downloads</span><span>Drive-by install</span><span>Exploit kits</span></div>
+      </div>
+      <div class="threat-card">
+        <div class="threat-icon" style="background:rgba(139,92,246,.1);color:#8b5cf6"><i class="fas fa-user-secret"></i></div>
+        <h4>Typosquatting</h4>
+        <p>Domains that closely mimic popular brands with slight spelling variations.</p>
+        <div class="threat-signals"><span>Misspelled brands</span><span>Character swaps</span><span>Lookalike domains</span></div>
+      </div>
+      <div class="threat-card">
+        <div class="threat-icon" style="background:rgba(6,182,212,.1);color:#06b6d4"><i class="fas fa-random"></i></div>
+        <h4>Redirects</h4>
+        <p>URLs that chain multiple redirects to hide the true destination.</p>
+        <div class="threat-signals"><span>URL shorteners</span><span>Chain redirects</span><span>Hidden destinations</span></div>
+      </div>
+      <div class="threat-card">
+        <div class="threat-icon" style="background:rgba(234,179,8,.1);color:#eab308"><i class="fas fa-gift"></i></div>
+        <h4>Scareware / Scams</h4>
+        <p>Fake prize pages, urgent warnings, or social engineering traps.</p>
+        <div class="threat-signals"><span>Free prize lures</span><span>Urgency tactics</span><span>Fake alerts</span></div>
+      </div>
+      <div class="threat-card">
+        <div class="threat-icon" style="background:rgba(239,68,68,.1);color:#ef4444"><i class="fas fa-lock-open"></i></div>
+        <h4>Insecure Connections</h4>
+        <p>HTTP links without encryption that expose data to interception.</p>
+        <div class="threat-signals"><span>No HTTPS</span><span>Expired certs</span><span>Mixed content</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="sl-footer">
+  <div class="sl-footer-inner">
+    <div class="nav-brand" style="justify-content:center;margin-bottom:.5rem"><i class="fas fa-shield-virus"></i><span>SecureLink</span><span class="nav-scanner">Scanner</span></div>
+    <p>Built by Sindhu Chirumamilla · Cybersecurity Education Tool</p>
+    <p style="margin-top:.35rem;font-size:.75rem;color:#475569">⚠️ This is a demonstration tool using heuristic analysis. Always verify with professional security tools.</p>
+  </div>
+</footer>
+
+<script src="scanner.js"></script>
+</body>
+</html>
