@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>StudyFlow — Your Ultimate Study Motivation Companion</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="nav-inner">
+    <div class="nav-brand"><i class="fas fa-book-open-reader"></i><span>Study<span class="accent">Flow</span></span></div>
+    <div class="nav-tabs" id="nav-tabs">
+      <button class="ntab active" data-tab="home" onclick="goTab('home')"><i class="fas fa-house"></i> Home</button>
+      <button class="ntab" data-tab="timer" onclick="goTab('timer')"><i class="fas fa-clock"></i> Focus Timer</button>
+      <button class="ntab" data-tab="tasks" onclick="goTab('tasks')"><i class="fas fa-list-check"></i> Tasks</button>
+      <button class="ntab" data-tab="stats" onclick="goTab('stats')"><i class="fas fa-chart-line"></i> Stats</button>
+      <button class="ntab" data-tab="music" onclick="goTab('music')"><i class="fas fa-music"></i> Focus Music</button>
+      <button class="ntab" data-tab="quotes" onclick="goTab('quotes')"><i class="fas fa-quote-left"></i> Quotes</button>
+    </div>
+    <button class="hamburger" onclick="toggleMobileNav()"><i class="fas fa-bars"></i></button>
+  </div>
+</nav>
+
+<!-- PAGE CONTENT -->
+<div class="page-wrap" id="page-wrap"></div>
+
+<!-- TOAST -->
+<div id="toast" class="sf-toast hidden"></div>
+
+<script src="app.js"></script>
+</body>
+</html>

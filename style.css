@@ -778,6 +778,9 @@ ul { list-style: none; }
 .project-img-placeholder.securelink {
   background: linear-gradient(135deg, #0EA5E9, #0369A1);
 }
+.project-img-placeholder.studyflow {
+  background: linear-gradient(135deg, #7C3AED, #EC4899);
+}
 .featured-project {
   border-color: rgba(124,58,237,.4);
   box-shadow: 0 0 30px rgba(124,58,237,.15);
