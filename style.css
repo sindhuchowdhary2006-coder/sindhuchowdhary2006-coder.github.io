@@ -770,3 +770,30 @@ ul { list-style: none; }
   .cert-preview-body h2 { font-size: 1.1rem; }
   .cert-preview-body h3 { font-size: 1.15rem; }
 }
+
+/* ═══════════════════════════════ FEATURED PROJECT */
+.project-img-placeholder.disaster {
+  background: linear-gradient(135deg, #DC2626, #7C3AED);
+}
+.featured-project {
+  border-color: rgba(124,58,237,.4);
+  box-shadow: 0 0 30px rgba(124,58,237,.15);
+}
+.featured-project .project-img { height: 180px; }
+.featured-badge {
+  position: absolute; top: .75rem; left: .75rem;
+  background: linear-gradient(135deg, var(--accent), #F97316);
+  color: #fff; font-size: .72rem; font-weight: 700;
+  padding: 3px 10px; border-radius: 50px;
+  display: flex; align-items: center; gap: .3rem;
+  z-index: 2;
+}
+.project-feature-list {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: .4rem; margin-bottom: .85rem;
+}
+.pf-item {
+  display: flex; align-items: center; gap: .4rem;
+  font-size: .78rem; color: var(--text-muted);
+}
+.pf-item i { color: var(--primary); font-size: .75rem; flex-shrink: 0; }
