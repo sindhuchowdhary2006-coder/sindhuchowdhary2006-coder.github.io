@@ -1,114 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DisasterShield — School Disaster Management</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Disaster Prep — School Disaster Management</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="stylesheet" href="auth.css"/>
 </head>
 <body>
-
-<!-- ══════════════════════════════════════════ AUTH PAGE -->
-<div id="page-auth" class="page active">
-  <div class="auth-split">
-
-    <!-- Left panel -->
-    <div class="auth-left">
-      <div class="auth-left-inner">
-        <div class="brand"><i class="fas fa-shield-halved"></i><span>DisasterShield</span></div>
-        <h1 class="auth-headline">School Emergency<br/>Management Portal</h1>
-        <p class="auth-tagline">Coordinating safety, resources and communication during critical situations.</p>
-        <div class="feature-list">
-          <div class="feature-item"><i class="fas fa-bell"></i><span>Real-time disaster alerts</span></div>
-          <div class="feature-item"><i class="fas fa-map-location-dot"></i><span>Affected area tracking</span></div>
-          <div class="feature-item"><i class="fas fa-boxes-stacked"></i><span>Resource management</span></div>
-          <div class="feature-item"><i class="fas fa-lock"></i><span>Role-based secure access</span></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Right panel -->
-    <div class="auth-right">
-      <div class="auth-box">
-
-        <!-- Tabs: Sign In / Create Account -->
-        <div class="auth-tabs">
-          <button class="auth-tab active" id="tab-signin" onclick="switchAuthTab('signin')">Sign In</button>
-          <button class="auth-tab" id="tab-create" onclick="switchAuthTab('create')">Create Account</button>
-        </div>
-
-        <!-- Role selector -->
-        <div class="role-selector">
-          <p class="role-label">Select your role</p>
-          <div class="role-btns">
-            <button class="role-btn active" data-role="student" onclick="setRole('student')">
-              <i class="fas fa-graduation-cap"></i><span>Student</span>
-            </button>
-            <button class="role-btn" data-role="teacher" onclick="setRole('teacher')">
-              <i class="fas fa-chalkboard-teacher"></i><span>Teacher</span>
-            </button>
-            <button class="role-btn" data-role="admin" onclick="setRole('admin')">
-              <i class="fas fa-user-shield"></i><span>Admin</span>
-            </button>
-          </div>
-        </div>
-
-        <!-- SIGN IN FORM -->
-        <form id="form-signin" onsubmit="handleSignIn(event)">
-          <!-- Student sign-in -->
-          <div id="si-student">
-            <div class="fg"><label>Roll Number</label><div class="input-wrap"><i class="fas fa-id-card"></i><input type="text" id="si-roll" placeholder="e.g. 21CS045" /></div></div>
-            <div class="fg"><label>Password</label><div class="input-wrap"><i class="fas fa-lock"></i><input type="password" id="si-pass-s" placeholder="Enter your password" /></div></div>
-          </div>
-          <!-- Teacher sign-in -->
-          <div id="si-teacher" class="hidden">
-            <div class="fg"><label>Email Address</label><div class="input-wrap"><i class="fas fa-envelope"></i><input type="email" id="si-email-t" placeholder="teacher@school.edu" /></div></div>
-            <div class="fg"><label>School Name</label><div class="input-wrap"><i class="fas fa-school"></i><input type="text" id="si-school-t" placeholder="e.g. Siddhartha Academy" /></div></div>
-            <div class="fg"><label>Password</label><div class="input-wrap"><i class="fas fa-lock"></i><input type="password" id="si-pass-t" placeholder="Enter your password" /></div></div>
-          </div>
-          <!-- Admin sign-in -->
-          <div id="si-admin" class="hidden">
-            <div class="fg"><label>Admin Email</label><div class="input-wrap"><i class="fas fa-envelope"></i><input type="email" id="si-email-a" placeholder="admin@district.gov" /></div></div>
-            <div class="fg"><label>Password</label><div class="input-wrap"><i class="fas fa-lock"></i><input type="password" id="si-pass-a" placeholder="Enter admin password" /></div></div>
-          </div>
-          <div id="signin-error" class="form-error hidden"></div>
-          <button type="submit" class="btn-auth"><i class="fas fa-right-to-bracket"></i> Sign In</button>
-        </form>
-
-        <!-- CREATE ACCOUNT FORM -->
-        <form id="form-create" class="hidden" onsubmit="handleCreate(event)">
-          <!-- Student create -->
-          <div id="ca-student">
-            <div class="fg"><label>Full Name</label><div class="input-wrap"><i class="fas fa-user"></i><input type="text" id="ca-name-s" placeholder="Your full name" /></div></div>
-            <div class="fg"><label>Roll Number</label><div class="input-wrap"><i class="fas fa-id-card"></i><input type="text" id="ca-roll" placeholder="e.g. 21CS045" /></div></div>
-            <div class="fg"><label>School Name</label><div class="input-wrap"><i class="fas fa-school"></i><input type="text" id="ca-school-s" placeholder="e.g. Siddhartha Academy" /></div></div>
-            <div class="fg"><label>Password</label><div class="input-wrap"><i class="fas fa-lock"></i><input type="password" id="ca-pass-s" placeholder="Create a password" /></div></div>
-          </div>
-          <!-- Teacher create -->
-          <div id="ca-teacher" class="hidden">
-            <div class="info-box"><i class="fas fa-circle-info"></i> Teacher accounts require pre-registered credentials from your school admin.</div>
-            <div class="fg"><label>Email Address</label><div class="input-wrap"><i class="fas fa-envelope"></i><input type="email" id="ca-email-t" placeholder="teacher@school.edu" /></div></div>
-            <div class="fg"><label>School Name</label><div class="input-wrap"><i class="fas fa-school"></i><input type="text" id="ca-school-t" placeholder="e.g. Siddhartha Academy" /></div></div>
-            <div class="fg"><label>Password <span class="hint">(set by admin)</span></label><div class="input-wrap"><i class="fas fa-lock"></i><input type="password" id="ca-pass-t" placeholder="Password given by admin" /></div></div>
-          </div>
-          <!-- Admin create -->
-          <div id="ca-admin" class="hidden">
-            <div class="fg"><label>Admin Email</label><div class="input-wrap"><i class="fas fa-envelope"></i><input type="email" id="ca-email-a" placeholder="admin@district.gov" /></div></div>
-            <div class="fg"><label>Password</label><div class="input-wrap"><i class="fas fa-lock"></i><input type="password" id="ca-pass-a" placeholder="Create admin password" /></div></div>
-          </div>
-          <div id="create-error" class="form-error hidden"></div>
-          <button type="submit" class="btn-auth"><i class="fas fa-user-plus"></i> Create Account</button>
-        </form>
-
-        <p class="demo-note"><i class="fas fa-circle-info"></i>&nbsp;Demo mode — any values work to sign in</p>
+<div class="auth-page">
+  <div class="auth-left">
+    <div class="auth-left-content">
+      <div class="auth-brand"><i class="fas fa-shield-halved"></i><span>Disaster Prep</span></div>
+      <h1>School Disaster<br/>Management System</h1>
+      <p>Learn, prepare and respond to disasters. A comprehensive platform for students, teachers and administrators.</p>
+      <div class="auth-features">
+        <div class="af"><i class="fas fa-book-open"></i><div><strong>Learning Modules</strong><span>4 disaster preparedness topics</span></div></div>
+        <div class="af"><i class="fas fa-circle-question"></i><div><strong>Practice Questions</strong><span>Test your knowledge</span></div></div>
+        <div class="af"><i class="fas fa-gamepad"></i><div><strong>Educational Games</strong><span>Learn through play</span></div></div>
+        <div class="af"><i class="fas fa-bell"></i><div><strong>Alert System</strong><span>Send & receive emergency alerts</span></div></div>
       </div>
     </div>
   </div>
-</div>
+  <div class="auth-right">
+    <div class="auth-card">
+      <div class="auth-card-header">
+        <div class="auth-logo"><i class="fas fa-shield-halved"></i><span>Disaster Prep</span></div>
+      </div>
+      <div class="auth-tabs">
+        <button class="atab active" id="tab-si" onclick="switchTab('si')">Sign In</button>
+        <button class="atab" id="tab-ca" onclick="switchTab('ca')">Create Account</button>
+      </div>
+      <div class="role-row">
+        <button class="rbtn active" data-r="student" onclick="setRole('student')"><i class="fas fa-graduation-cap"></i> Student</button>
+        <button class="rbtn" data-r="teacher" onclick="setRole('teacher')"><i class="fas fa-chalkboard-teacher"></i> Teacher</button>
+        <button class="rbtn" data-r="admin" onclick="setRole('admin')"><i class="fas fa-user-shield"></i> Admin</button>
+      </div>
 
-<script src="app.js"></script>
+      <!-- SIGN IN -->
+      <form id="form-si" onsubmit="doSignIn(event)">
+        <div id="si-s">
+          <div class="field"><label>Roll Number</label><input id="si-roll" type="text" placeholder="e.g. 24eu01075"/></div>
+          <div class="field"><label>Password</label><input id="si-pw-s" type="password" placeholder="Enter password"/></div>
+        </div>
+        <div id="si-t" class="dn">
+          <div class="field"><label>Email</label><input id="si-email-t" type="email" placeholder="teacher@school.edu"/></div>
+          <div class="field"><label>School Name</label><input id="si-school-t" type="text" placeholder="School name"/></div>
+          <div class="field"><label>Password</label><input id="si-pw-t" type="password" placeholder="Enter password"/></div>
+        </div>
+        <div id="si-a" class="dn">
+          <div class="field"><label>Email</label><input id="si-email-a" type="email" placeholder="admin@school.edu"/></div>
+          <div class="field"><label>Password</label><input id="si-pw-a" type="password" placeholder="Enter password"/></div>
+        </div>
+        <div id="si-err" class="err dn"></div>
+        <button class="abtn" type="submit">Sign In <i class="fas fa-arrow-right"></i></button>
+      </form>
+
+      <!-- CREATE ACCOUNT -->
+      <form id="form-ca" class="dn" onsubmit="doCreate(event)">
+        <div id="ca-s">
+          <div class="field"><label>Full Name</label><input id="ca-name" type="text" placeholder="Your full name"/></div>
+          <div class="field"><label>Email</label><input id="ca-email-s" type="email" placeholder="student@school.edu"/></div>
+          <div class="field"><label>Roll Number</label><input id="ca-roll" type="text" placeholder="e.g. 24eu01075"/></div>
+          <div class="field"><label>School Name</label><input id="ca-school-s" type="text" placeholder="e.g. Siddhartha Academy"/></div>
+          <div class="field"><label>Password</label><input id="ca-pw-s" type="password" placeholder="Create password"/></div>
+        </div>
+        <div id="ca-t" class="dn">
+          <div class="info-note"><i class="fas fa-info-circle"></i> Teacher accounts need pre-registered credentials from your admin.</div>
+          <div class="field"><label>Full Name</label><input id="ca-name-t" type="text" placeholder="Your full name"/></div>
+          <div class="field"><label>Email</label><input id="ca-email-t" type="email" placeholder="teacher@school.edu"/></div>
+          <div class="field"><label>School Name</label><input id="ca-school-t" type="text" placeholder="School name"/></div>
+          <div class="field"><label>Password <small>(assigned by admin)</small></label><input id="ca-pw-t" type="password" placeholder="Password from admin"/></div>
+        </div>
+        <div id="ca-a" class="dn">
+          <div class="field"><label>Full Name</label><input id="ca-name-a" type="text" placeholder="Admin name"/></div>
+          <div class="field"><label>Email</label><input id="ca-email-a" type="email" placeholder="admin@school.edu"/></div>
+          <div class="field"><label>Password</label><input id="ca-pw-a" type="password" placeholder="Create password"/></div>
+        </div>
+        <div id="ca-err" class="err dn"></div>
+        <button class="abtn" type="submit">Create Account <i class="fas fa-user-plus"></i></button>
+      </form>
+
+      <p class="demo-tip"><i class="fas fa-circle-info"></i> Demo: fill any values and sign in</p>
+    </div>
+  </div>
+</div>
+<script src="auth.js"></script>
 </body>
 </html>
