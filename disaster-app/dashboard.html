@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DisasterShield — Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="dash.css" />
+</head>
+<body>
+<div class="app-shell">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sb-header">
+      <div class="sb-brand"><i class="fas fa-shield-halved"></i><span>DisasterShield</span></div>
+      <button class="sb-close" onclick="toggleSidebar()"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="sb-user" id="sb-user"></div>
+    <nav class="sb-nav" id="sb-nav"></nav>
+    <div class="sb-bottom">
+      <button class="sb-logout" onclick="logout()"><i class="fas fa-right-from-bracket"></i>Sign Out</button>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <div class="main">
+    <header class="topbar">
+      <button class="menu-btn" onclick="toggleSidebar()"><i class="fas fa-bars"></i></button>
+      <h1 class="page-title" id="page-title">Dashboard</h1>
+      <div class="tb-right">
+        <button class="tb-icon-btn alert-btn" onclick="goTab('alerts')" title="Alerts">
+          <i class="fas fa-bell"></i><span class="dot-red"></span>
+        </button>
+        <div class="tb-avatar" id="tb-avatar"></div>
+      </div>
+    </header>
+    <div class="content" id="content"></div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div id="toast" class="toast hidden"></div>
+
+<!-- CONFIRM MODAL -->
+<div id="confirm-modal" class="modal-overlay hidden">
+  <div class="modal-box">
+    <h3 id="confirm-title">Confirm Action</h3>
+    <p id="confirm-msg"></p>
+    <div class="modal-actions">
+      <button class="btn-ghost" onclick="closeConfirm()">Cancel</button>
+      <button class="btn-danger" id="confirm-ok">Confirm</button>
+    </div>
+  </div>
+</div>
+
+<script src="dash.js"></script>
+</body>
+</html>
