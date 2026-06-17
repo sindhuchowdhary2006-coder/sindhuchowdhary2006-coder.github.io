@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DisasterShield — School Disaster Management System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- ══════════ AUTH SCREEN ══════════ -->
+<div id="auth-screen" class="screen active">
+  <div class="auth-bg">
+    <div class="auth-card">
+      <div class="auth-logo"><i class="fas fa-shield-halved"></i><span>DisasterShield</span></div>
+      <p class="auth-sub">School Emergency Management Portal</p>
+
+      <div class="role-tabs">
+        <button class="role-tab active" data-role="student" onclick="setRole('student')"><i class="fas fa-graduation-cap"></i> Student</button>
+        <button class="role-tab" data-role="teacher" onclick="setRole('teacher')"><i class="fas fa-chalkboard-teacher"></i> Teacher</button>
+        <button class="role-tab" data-role="admin" onclick="setRole('admin')"><i class="fas fa-user-shield"></i> Admin</button>
+      </div>
+
+      <form id="auth-form" onsubmit="handleLogin(event)">
+        <div id="student-fields">
+          <div class="form-group"><label>Roll Number</label><input type="text" id="roll" placeholder="e.g. 21CS045" /></div>
+          <div class="form-group"><label>School Name</label><input type="text" id="school-s" placeholder="e.g. Siddhartha Academy" /></div>
+          <div class="form-group"><label>Password</label><input type="password" id="pass-s" placeholder="Enter password" /></div>
+        </div>
+        <div id="teacher-fields" class="hidden">
+          <div class="form-group"><label>Email</label><input type="email" id="email-t" placeholder="teacher@school.edu" /></div>
+          <div class="form-group"><label>School Name</label><input type="text" id="school-t" placeholder="e.g. Siddhartha Academy" /></div>
+          <div class="form-group"><label>Password</label><input type="password" id="pass-t" placeholder="Enter password" /></div>
+        </div>
+        <div id="admin-fields" class="hidden">
+          <div class="form-group"><label>Admin Email</label><input type="email" id="email-a" placeholder="admin@district.gov" /></div>
+          <div class="form-group"><label>Password</label><input type="password" id="pass-a" placeholder="Enter admin password" /></div>
+        </div>
+        <div id="auth-error" class="auth-error hidden"></div>
+        <button type="submit" class="btn-login"><i class="fas fa-right-to-bracket"></i> Sign In</button>
+      </form>
+      <p class="demo-hint"><i class="fas fa-circle-info"></i> Demo: use any values to sign in</p>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ DASHBOARD SCREEN ══════════ -->
+<div id="dashboard-screen" class="screen">
+  <!-- Sidebar -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <i class="fas fa-shield-halved"></i>
+      <span>DisasterShield</span>
+      <button class="sidebar-close" onclick="toggleSidebar()"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="user-badge" id="user-badge"></div>
+    <nav class="sidebar-nav" id="sidebar-nav"></nav>
+    <button class="btn-logout" onclick="logout()"><i class="fas fa-right-from-bracket"></i> Sign Out</button>
+  </aside>
+
+  <!-- Main -->
+  <div class="main-wrap">
+    <header class="topbar">
+      <button class="menu-btn" onclick="toggleSidebar()"><i class="fas fa-bars"></i></button>
+      <div class="topbar-title" id="topbar-title">Dashboard</div>
+      <div class="topbar-right">
+        <div class="alert-bell" onclick="showTab('alerts')">
+          <i class="fas fa-bell"></i>
+          <span class="bell-dot"></span>
+        </div>
+        <div class="topbar-avatar" id="topbar-avatar"></div>
+      </div>
+    </header>
+
+    <main class="content" id="main-content"></main>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
