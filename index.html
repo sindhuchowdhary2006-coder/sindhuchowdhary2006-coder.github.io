@@ -14,11 +14,13 @@
 </head>
 <body>
 
+  <!-- 3D Background Canvas -->
+  <canvas id="bg-3d"></canvas>
+
   <!-- Scroll Progress Bar -->
   <div id="scroll-progress"></div>
 
-  <!-- Particle Background -->
-  <canvas id="particle-canvas"></canvas>
+  <!-- Particle Background (replaced by 3D canvas) -->
 
   <!-- Navigation -->
   <nav id="navbar">
@@ -76,7 +78,8 @@
     <div class="hero-visual">
       <div class="hero-avatar-ring">
         <div class="hero-avatar">
-          <div class="avatar-placeholder"><i class="fas fa-user-graduate"></i></div>
+          <img src="sindhu-photo.jpg" alt="Sindhu Chirumamilla" class="avatar-photo" onerror="this.style.display='none';document.querySelector('.avatar-placeholder').style.display='flex'"/>
+          <div class="avatar-placeholder" style="display:none"><i class="fas fa-user-graduate"></i></div>
         </div>
         <div class="orbit orbit-1"><div class="orbit-icon"><i class="fab fa-aws"></i></div></div>
         <div class="orbit orbit-2"><div class="orbit-icon"><i class="fas fa-cloud"></i></div></div>
@@ -95,7 +98,10 @@
       <div class="about-grid">
         <div class="about-image-col">
           <div class="about-card glass">
-            <div class="about-avatar"><i class="fas fa-user-graduate"></i></div>
+            <div class="about-avatar">
+            <img src="sindhu-photo.jpg" alt="Sindhu Chirumamilla" class="about-avatar-photo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+            <i class="fas fa-user-graduate" style="display:none"></i>
+          </div>
             <h3>Sindhu Chirumamilla</h3>
             <p class="about-role">B.Tech Student — CSE</p>
             <p class="about-college">Siddhartha Academy of Higher Education, Vijayawada</p>
@@ -770,6 +776,7 @@
     </div>
   </footer>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
