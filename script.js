@@ -159,68 +159,178 @@ const counterObs = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.stat-number').forEach(el => counterObs.observe(el));
 
-// ── Particle Canvas ───────────────────────────────────────
-const canvas = document.getElementById('particle-canvas');
-const ctx    = canvas.getContext('2d');
-let   particles = [];
+// ── 3D Background (Three.js) ──────────────────────────────
+(function init3D() {
+  if (typeof THREE === 'undefined') return;
 
-function resizeCanvas() {
-  canvas.width  = window.innerWidth;
-  canvas.height = window.innerHeight;
-}
-resizeCanvas();
-window.addEventListener('resize', () => { resizeCanvas(); initParticles(); });
+  const canvas3d = document.getElementById('bg-3d');
+  const renderer = new THREE.WebGLRenderer({ canvas: canvas3d, antialias: true, alpha: true });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  renderer.setClearColor(0x000000, 0);
 
-function initParticles() {
-  particles = [];
-  const count = Math.min(Math.floor(window.innerWidth / 10), 100);
-  for (let i = 0; i < count; i++) {
-    particles.push({
-      x: Math.random() * canvas.width,
-      y: Math.random() * canvas.height,
-      r: Math.random() * 1.5 + 0.4,
-      dx: (Math.random() - 0.5) * 0.35,
-      dy: (Math.random() - 0.5) * 0.35,
-      a: Math.random() * 0.5 + 0.1,
-    });
+  const scene  = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
+  camera.position.set(0, 0, 28);
+
+  // ── Galaxy of floating dots ──────────────────────────────
+  const starCount = 1800;
+  const starGeo   = new THREE.BufferGeometry();
+  const starPos   = new Float32Array(starCount * 3);
+  const starCol   = new Float32Array(starCount * 3);
+  const colors3   = [
+    new THREE.Color(0x10B981),
+    new THREE.Color(0x34D399),
+    new THREE.Color(0xF59E0B),
+    new THREE.Color(0x3B82F6),
+    new THREE.Color(0xFBBF24),
+    new THREE.Color(0xffffff),
+  ];
+  for (let i = 0; i < starCount; i++) {
+    const r     = 8 + Math.random() * 35;
+    const theta = Math.random() * Math.PI * 2;
+    const phi   = Math.acos(2 * Math.random() - 1);
+    starPos[i*3]   = r * Math.sin(phi) * Math.cos(theta);
+    starPos[i*3+1] = r * Math.sin(phi) * Math.sin(theta);
+    starPos[i*3+2] = r * Math.cos(phi);
+    const c = colors3[Math.floor(Math.random() * colors3.length)];
+    starCol[i*3]   = c.r;
+    starCol[i*3+1] = c.g;
+    starCol[i*3+2] = c.b;
   }
-}
-initParticles();
+  starGeo.setAttribute('position', new THREE.BufferAttribute(starPos, 3));
+  starGeo.setAttribute('color',    new THREE.BufferAttribute(starCol, 3));
+  const starMat  = new THREE.PointsMaterial({ size: 0.12, vertexColors: true, transparent: true, opacity: 0.75, sizeAttenuation: true });
+  const starField = new THREE.Points(starGeo, starMat);
+  scene.add(starField);
 
-function drawParticles() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  const rgb = '124,58,237';
-
-  particles.forEach(p => {
-    ctx.beginPath();
-    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-    ctx.fillStyle = `rgba(${rgb},${p.a})`;
-    ctx.fill();
-
-    p.x += p.dx;
-    p.y += p.dy;
-    if (p.x < 0 || p.x > canvas.width)  p.dx *= -1;
-    if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
+  // ── Glowing rings ───────────────────────────────────────
+  const ringData = [
+    { r: 6,  tube: 0.012, color: 0x10B981, tilt: 0.4  },
+    { r: 10, tube: 0.008, color: 0xF59E0B, tilt: -0.6 },
+    { r: 14, tube: 0.006, color: 0x3B82F6, tilt: 0.9  },
+    { r: 18, tube: 0.005, color: 0x34D399, tilt: -0.3 },
+  ];
+  const rings = [];
+  ringData.forEach(d => {
+    const geo  = new THREE.TorusGeometry(d.r, d.tube, 16, 200);
+    const mat  = new THREE.MeshBasicMaterial({ color: d.color, transparent: true, opacity: 0.35 });
+    const mesh = new THREE.Mesh(geo, mat);
+    mesh.rotation.x = d.tilt;
+    mesh.rotation.y = Math.random() * Math.PI;
+    rings.push(mesh);
+    scene.add(mesh);
   });
 
-  // connecting lines
-  for (let i = 0; i < particles.length; i++) {
-    for (let j = i + 1; j < particles.length; j++) {
-      const a = particles[i], b = particles[j];
-      const dist = Math.hypot(a.x - b.x, a.y - b.y);
-      if (dist < 120) {
-        ctx.beginPath();
-        ctx.moveTo(a.x, a.y);
-        ctx.lineTo(b.x, b.y);
-        ctx.strokeStyle = `rgba(${rgb},${0.07 * (1 - dist / 120)})`;
-        ctx.lineWidth   = 0.5;
-        ctx.stroke();
-      }
-    }
+  // ── Floating tetrahedrons (tech nodes) ──────────────────
+  const nodeCount = 22;
+  const nodes = [];
+  const nodeCols = [0x10B981, 0xF59E0B, 0x3B82F6, 0x34D399, 0xFBBF24];
+  for (let i = 0; i < nodeCount; i++) {
+    const geo  = new THREE.TetrahedronGeometry(0.18 + Math.random() * 0.22, 0);
+    const mat  = new THREE.MeshBasicMaterial({
+      color: nodeCols[i % nodeCols.length],
+      transparent: true,
+      opacity: 0.55,
+      wireframe: Math.random() > 0.5,
+    });
+    const mesh = new THREE.Mesh(geo, mat);
+    const r    = 5 + Math.random() * 16;
+    const th   = Math.random() * Math.PI * 2;
+    const ph   = Math.acos(2 * Math.random() - 1);
+    mesh.position.set(r * Math.sin(ph) * Math.cos(th), r * Math.sin(ph) * Math.sin(th), r * Math.cos(ph));
+    mesh.userData = { speedX: (Math.random()-0.5)*0.004, speedY: (Math.random()-0.5)*0.004, floatAmp: Math.random()*0.3, floatSpeed: 0.5+Math.random(), t: Math.random()*100 };
+    nodes.push(mesh);
+    scene.add(mesh);
   }
-  requestAnimationFrame(drawParticles);
-}
-drawParticles();
+
+  // ── DNA helix strands ────────────────────────────────────
+  const helixGroup = new THREE.Group();
+  const helixPoints1 = [], helixPoints2 = [];
+  const helixSteps = 120;
+  for (let i = 0; i < helixSteps; i++) {
+    const t = (i / helixSteps) * Math.PI * 8;
+    const y = (i / helixSteps) * 30 - 15;
+    helixPoints1.push(new THREE.Vector3(Math.cos(t) * 2.5, y, Math.sin(t) * 2.5));
+    helixPoints2.push(new THREE.Vector3(Math.cos(t + Math.PI) * 2.5, y, Math.sin(t + Math.PI) * 2.5));
+  }
+  const curve1 = new THREE.CatmullRomCurve3(helixPoints1);
+  const curve2 = new THREE.CatmullRomCurve3(helixPoints2);
+  [curve1, curve2].forEach((curve, ci) => {
+    const geo = new THREE.TubeGeometry(curve, 200, 0.04, 6, false);
+    const mat = new THREE.MeshBasicMaterial({ color: ci === 0 ? 0x10B981 : 0xF59E0B, transparent: true, opacity: 0.28 });
+    helixGroup.add(new THREE.Mesh(geo, mat));
+  });
+  helixGroup.position.set(12, 0, -8);
+  scene.add(helixGroup);
+
+  // ── Icosahedron wireframe (center glow) ─────────────────
+  const icoGeo = new THREE.IcosahedronGeometry(3.5, 1);
+  const icoMat = new THREE.MeshBasicMaterial({ color: 0x10B981, wireframe: true, transparent: true, opacity: 0.08 });
+  const ico    = new THREE.Mesh(icoGeo, icoMat);
+  scene.add(ico);
+
+  // ── Mouse parallax ──────────────────────────────────────
+  let mouseX = 0, mouseY = 0;
+  document.addEventListener('mousemove', e => {
+    mouseX = (e.clientX / window.innerWidth  - 0.5) * 2;
+    mouseY = (e.clientY / window.innerHeight - 0.5) * 2;
+  });
+
+  // ── Scroll zoom ─────────────────────────────────────────
+  let scrollY = 0;
+  window.addEventListener('scroll', () => { scrollY = window.scrollY; });
+
+  // ── Animation loop ───────────────────────────────────────
+  let frame = 0;
+  function animate() {
+    requestAnimationFrame(animate);
+    frame += 0.005;
+
+    // Star field slow drift
+    starField.rotation.y += 0.0003;
+    starField.rotation.x += 0.0001;
+
+    // Rings rotate
+    rings.forEach((ring, i) => {
+      ring.rotation.z += (i % 2 === 0 ? 0.0008 : -0.0006);
+      ring.rotation.y += 0.0003;
+    });
+
+    // Helix spin
+    helixGroup.rotation.y += 0.004;
+
+    // Icosahedron pulse
+    const pulse = 1 + Math.sin(frame * 2) * 0.04;
+    ico.scale.set(pulse, pulse, pulse);
+    ico.rotation.y += 0.002;
+    ico.rotation.x += 0.001;
+
+    // Nodes float
+    nodes.forEach(n => {
+      n.userData.t += 0.01;
+      n.rotation.x += n.userData.speedX;
+      n.rotation.y += n.userData.speedY;
+      n.position.y += Math.sin(n.userData.t * n.userData.floatSpeed) * 0.003;
+    });
+
+    // Camera parallax with mouse
+    camera.position.x += (mouseX * 1.5 - camera.position.x) * 0.03;
+    camera.position.y += (-mouseY * 1.5 - camera.position.y) * 0.03;
+    camera.position.z  = 28 + scrollY * 0.005;
+    camera.lookAt(0, 0, 0);
+
+    renderer.render(scene, camera);
+  }
+  animate();
+
+  // ── Resize ──────────────────────────────────────────────
+  window.addEventListener('resize', () => {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+  });
+})();
 
 // ── Contact Form Validation ───────────────────────────────
 const form = document.getElementById('contact-form');
