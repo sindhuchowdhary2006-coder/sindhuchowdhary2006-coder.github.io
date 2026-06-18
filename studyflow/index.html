@@ -10,27 +10,23 @@
 </head>
 <body>
 
-<!-- NAVBAR -->
 <nav class="navbar">
   <div class="nav-inner">
-    <div class="nav-brand"><i class="fas fa-book-open-reader"></i><span>Study<span class="accent">Flow</span></span></div>
-    <div class="nav-tabs" id="nav-tabs">
-      <button class="ntab active" data-tab="home" onclick="goTab('home')"><i class="fas fa-house"></i> Home</button>
-      <button class="ntab" data-tab="timer" onclick="goTab('timer')"><i class="fas fa-clock"></i> Focus Timer</button>
-      <button class="ntab" data-tab="tasks" onclick="goTab('tasks')"><i class="fas fa-list-check"></i> Tasks</button>
-      <button class="ntab" data-tab="stats" onclick="goTab('stats')"><i class="fas fa-chart-line"></i> Stats</button>
-      <button class="ntab" data-tab="music" onclick="goTab('music')"><i class="fas fa-music"></i> Focus Music</button>
-      <button class="ntab" data-tab="quotes" onclick="goTab('quotes')"><i class="fas fa-quote-left"></i> Quotes</button>
+    <div class="brand"><i class="fas fa-book-open-reader"></i><span>Study<em>Flow</em></span></div>
+    <div class="nav-links" id="nav-links">
+      <button class="nl active" data-tab="home"   onclick="goTab('home')">  <i class="fas fa-house"></i>       Home</button>
+      <button class="nl"        data-tab="timer"  onclick="goTab('timer')"> <i class="fas fa-clock"></i>       Focus Timer</button>
+      <button class="nl"        data-tab="tasks"  onclick="goTab('tasks')"> <i class="fas fa-list-check"></i>  Tasks</button>
+      <button class="nl"        data-tab="stats"  onclick="goTab('stats')"> <i class="fas fa-chart-line"></i>  Stats</button>
+      <button class="nl"        data-tab="music"  onclick="goTab('music')"> <i class="fas fa-music"></i>       Music</button>
+      <button class="nl"        data-tab="quotes" onclick="goTab('quotes')"><i class="fas fa-quote-left"></i>  Quotes</button>
     </div>
-    <button class="hamburger" onclick="toggleMobileNav()"><i class="fas fa-bars"></i></button>
+    <button class="hbg" id="hbg" onclick="toggleNav()"><i class="fas fa-bars"></i></button>
   </div>
 </nav>
 
-<!-- PAGE CONTENT -->
-<div class="page-wrap" id="page-wrap"></div>
-
-<!-- TOAST -->
-<div id="toast" class="sf-toast hidden"></div>
+<div id="root"></div>
+<div id="toast-el" class="toast-el"></div>
 
 <script src="app.js"></script>
 </body>
