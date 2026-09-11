@@ -179,12 +179,12 @@ document.querySelectorAll('.stat-number').forEach(el => counterObs.observe(el));
   const starPos   = new Float32Array(starCount * 3);
   const starCol   = new Float32Array(starCount * 3);
   const colors3   = [
-    new THREE.Color(0x10B981),
-    new THREE.Color(0x34D399),
-    new THREE.Color(0xF59E0B),
-    new THREE.Color(0x3B82F6),
-    new THREE.Color(0xFBBF24),
-    new THREE.Color(0xffffff),
+    new THREE.Color(0x4F8EF7),
+    new THREE.Color(0x93C5FD),
+    new THREE.Color(0xA78BFA),
+    new THREE.Color(0xF472B6),
+    new THREE.Color(0x6EE7B7),
+    new THREE.Color(0xFDE68A),
   ];
   for (let i = 0; i < starCount; i++) {
     const r     = 8 + Math.random() * 35;
@@ -200,16 +200,16 @@ document.querySelectorAll('.stat-number').forEach(el => counterObs.observe(el));
   }
   starGeo.setAttribute('position', new THREE.BufferAttribute(starPos, 3));
   starGeo.setAttribute('color',    new THREE.BufferAttribute(starCol, 3));
-  const starMat  = new THREE.PointsMaterial({ size: 0.12, vertexColors: true, transparent: true, opacity: 0.75, sizeAttenuation: true });
+  const starMat  = new THREE.PointsMaterial({ size: 0.12, vertexColors: true, transparent: true, opacity: 0.45, sizeAttenuation: true });
   const starField = new THREE.Points(starGeo, starMat);
   scene.add(starField);
 
   // ── Glowing rings ───────────────────────────────────────
   const ringData = [
-    { r: 6,  tube: 0.012, color: 0x10B981, tilt: 0.4  },
-    { r: 10, tube: 0.008, color: 0xF59E0B, tilt: -0.6 },
-    { r: 14, tube: 0.006, color: 0x3B82F6, tilt: 0.9  },
-    { r: 18, tube: 0.005, color: 0x34D399, tilt: -0.3 },
+    { r: 6,  tube: 0.012, color: 0x93C5FD, tilt: 0.4  },
+    { r: 10, tube: 0.008, color: 0xC4B5FD, tilt: -0.6 },
+    { r: 14, tube: 0.006, color: 0x4F8EF7, tilt: 0.9  },
+    { r: 18, tube: 0.005, color: 0xFDA4AF, tilt: -0.3 },
   ];
   const rings = [];
   ringData.forEach(d => {
@@ -225,7 +225,7 @@ document.querySelectorAll('.stat-number').forEach(el => counterObs.observe(el));
   // ── Floating tetrahedrons (tech nodes) ──────────────────
   const nodeCount = 22;
   const nodes = [];
-  const nodeCols = [0x10B981, 0xF59E0B, 0x3B82F6, 0x34D399, 0xFBBF24];
+  const nodeCols = [0x4F8EF7, 0xA78BFA, 0xF472B6, 0x93C5FD, 0x6EE7B7];
   for (let i = 0; i < nodeCount; i++) {
     const geo  = new THREE.TetrahedronGeometry(0.18 + Math.random() * 0.22, 0);
     const mat  = new THREE.MeshBasicMaterial({
@@ -258,7 +258,7 @@ document.querySelectorAll('.stat-number').forEach(el => counterObs.observe(el));
   const curve2 = new THREE.CatmullRomCurve3(helixPoints2);
   [curve1, curve2].forEach((curve, ci) => {
     const geo = new THREE.TubeGeometry(curve, 200, 0.04, 6, false);
-    const mat = new THREE.MeshBasicMaterial({ color: ci === 0 ? 0x10B981 : 0xF59E0B, transparent: true, opacity: 0.28 });
+    const mat = new THREE.MeshBasicMaterial({ color: ci === 0 ? 0x93C5FD : 0xC4B5FD, transparent: true, opacity: 0.22 });
     helixGroup.add(new THREE.Mesh(geo, mat));
   });
   helixGroup.position.set(12, 0, -8);
@@ -266,7 +266,7 @@ document.querySelectorAll('.stat-number').forEach(el => counterObs.observe(el));
 
   // ── Icosahedron wireframe (center glow) ─────────────────
   const icoGeo = new THREE.IcosahedronGeometry(3.5, 1);
-  const icoMat = new THREE.MeshBasicMaterial({ color: 0x10B981, wireframe: true, transparent: true, opacity: 0.08 });
+  const icoMat = new THREE.MeshBasicMaterial({ color: 0x4F8EF7, wireframe: true, transparent: true, opacity: 0.06 });
   const ico    = new THREE.Mesh(icoGeo, icoMat);
   scene.add(ico);
 
