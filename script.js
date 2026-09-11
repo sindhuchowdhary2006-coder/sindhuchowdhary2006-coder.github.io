@@ -7,7 +7,7 @@ const html      = document.documentElement;
 const themeBtn  = document.getElementById('theme-toggle');
 const themeIcon = document.getElementById('theme-icon');
 
-const savedTheme = localStorage.getItem('sc-theme') || 'dark';
+const savedTheme = localStorage.getItem('sc-theme') || 'light';
 html.setAttribute('data-theme', savedTheme);
 updateThemeIcon(savedTheme);
 
